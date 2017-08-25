@@ -29,14 +29,6 @@ namespace SessionModuleClient
                 SetAsUnauthorized(actionContext);
                 return Task.CompletedTask;
             }
-
-            return Task.CompletedTask;
-        }
-
-        static void SetAsUnauthorized(HttpActionContext actionContext)
-        {
-            actionContext.Response = new HttpResponseMessage(
-                HttpStatusCode.Unauthorized);
         }
     }
 }
