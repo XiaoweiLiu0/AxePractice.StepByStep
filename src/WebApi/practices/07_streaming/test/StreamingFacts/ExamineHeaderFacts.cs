@@ -11,7 +11,7 @@ namespace StreamingFacts
         {
             BaseAddress = new Uri("http://localhost:49724")
         };
-    }
+    } 
 
     public class ExamineHeaderFacts
     {
