@@ -22,12 +22,17 @@ namespace WebApp
              * the content is something that we do not know (octet-stream).
              */
 
-            if (hostContext == null) throw new ArgumentNullException(nameof(hostContext));
+            if (hostContext == null)
+                throw new ArgumentNullException(nameof(hostContext));
             var context = hostContext as HttpContextBase;
-            var contentType = context?.Request?.ContentType;
+            HttpRequestBase request = context?.Request;
+            if (request?.ContentType == null)
+            {
+                return true;
+            }
 
-            return !string.IsNullOrEmpty(contentType) &&
-                   !contentType.Equals("application/octet-stream");
+            return !string.IsNullOrEmpty(request.ContentType) 
+                && !request.ContentType.Equals("application/octet-stream");
 
             #endregion
         }
