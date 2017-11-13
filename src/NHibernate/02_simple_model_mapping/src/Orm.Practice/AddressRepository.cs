@@ -15,7 +15,12 @@ namespace Orm.Practice
 
         public AddressRepository(ISession session)
         {
-            this.session = session ?? throw new ArgumentNullException(nameof(session));
+            if (session == null)
+            {
+                throw new ArgumentNullException(nameof(session));
+            }
+
+            this.session = session;
         }
 
         public Address Get(int id)
